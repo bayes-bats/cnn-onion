@@ -4,6 +4,6 @@ What aspects of this activity have impacted your learning positively?
 
 What aspects of this activity have impacted your learning negatively?
 
-Any other comments you have about this activity?
+What is your overall opinion of this activity?
 
 Do you have any recommendations on how this activity can be improved for future students?
