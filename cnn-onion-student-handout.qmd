@@ -1,0 +1,100 @@
+---
+title: "CNN Onion Handout"
+format: pdf
+editor: visual
+---
+
+## Discussion Questions
+
+### Prior Beliefs
+- What was your initial prior belief about the proportion of quiz answers a person would get right?
+
+\vspace{3\baselineskip}
+
+- Which predefined prior (Optimistic, Undecided, Pessimistic) did your belief most closely align with?
+
+\vspace{3\baselineskip}
+
+- Would you describe your prior as informative or vague? Why?
+
+\vspace{3\baselineskip}
+
+### Interpreting Priors
+- Look at the plot of your prior distribution. What does it tell you about your expectations?
+
+\vspace{3\baselineskip}
+
+- How would a more informative prior (e.g., Beta(140, 10)) affect the shape of the distribution compared to a vague one?
+
+\vspace{3\baselineskip}
+
+### Updating with Data
+
+Fill out the Quiz Results table after taking the quiz
+
+| Participant             | Correct | Incorrect |
+|-------------------------|:-------:|:---------:|
+| Your Score              | _______ | _________ |
+| Person on Your Left     | _______ | _________ |
+| Person on Your Right    | _______ | _________ |
+| Class Total             | _______ | _________ |
+
+
+- How did your posterior distribution change after observing your own quiz results?
+
+\vspace{3\baselineskip}
+
+- How did your posterior change when you added a classmate's score? What about after pooling the full class data?
+
+\vspace{3\baselineskip}
+
+- What do you notice about how increasing the amount of data affects the posterior distribution?
+
+\vspace{3\baselineskip}
+
+### Comparing Priors and Posteriors
+
+- Compare your posterior with one of the predefined priors (Optimistic, Pessimistic, etc.). What are the differences in mean, mode, and standard deviation?
+
+\vspace{3\baselineskip}
+
+- What do these summary statistics tell you about your belief in someone guessing correctly after seeing the data?
+
+\vspace{3\baselineskip}
+
+### Critical Reflection
+
+- Inspecting the updated posteriors, how did the posteriors change or differ based on the respective priors?
+
+\vspace{3\baselineskip}
+
+- What happened when you had a more informative prior, e.g. The Very Optimistic?
+
+\vspace{3\baselineskip}
+
+- Look back at the summary statistics that you calculated for the distributions. Choose one of the posteriors “Optimistic, Pessimistic, Undecided, Very Optimistic” and compare it with your own. What do each of the summary statistics (mean, mode, standard deviation) tell you about the probability of success after seeing the data?
+
+\vspace{3\baselineskip}
+
+- Think about your prior prediction and how it compared to the data.
+
+\vspace{3\baselineskip}
+
+- How similar or different was your prior to the actual results?
+
+\vspace{3\baselineskip}
+
+- Did updating your beliefs with data change your thinking? In what way?
+
+\vspace{3\baselineskip}
+
+- If you had chosen a different prior (e.g., more vague or more informative), how would your posterior have changed?
+
+\vspace{3\baselineskip}
+
+- What does this activity show about the role of prior knowledge or assumptions in data analysis?
+
+\vspace{3\baselineskip}
+
+
+Take a few minutes to jot down your thoughts before share your ideas with a partner or group.
