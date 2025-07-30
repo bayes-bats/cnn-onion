@@ -54,7 +54,7 @@ CNN (the Cable News Network) is widely considered a reputable news source. The O
 
 In this exercise you will assess people's ability to determine real news stories published on [cnn.com](cnn.com) from fake news stories published on [theonion.com](theonion.com).
 
-![Frontpage of the Onion. Photo: Casey Bisson, via Flickr](the_onion.jpg){fig-alt="Front page of Onion Newspaper: Headline reads Wikipedia Celebrates 750 Years of American Independence"}
+![Frontpage of the Onion. Photo: Casey Bisson, via Flickr](../images/the_onion.jpg){fig-alt="Front page of Onion Newspaper: Headline reads Wikipedia Celebrates 750 Years of American Independence"}
 
 ## Packages
 
