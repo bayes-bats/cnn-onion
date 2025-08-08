@@ -1,13 +1,19 @@
 ---
-title: "cnn-onion"
+title: "CNN vs. Onion"
 ---
 
-This is a Quarto website.
+[Some description]
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Bayesian Activity
 
-```{r}
-1 + 1
-```
+[Facilitator Guide](bayesian-activity/cnn-onion-facilitator-guide.qmd)
 
-[Bayesian Facilitator Guide](bayesian-activity/cnn-onion-facilitator-guide.qmd)
+[Student Handout](bayesian-activity/cnn-onion-student-handout.qmd)
+
+## Frequentist Activity
+
+[Student Handout](frequentist-activity/cnn-onion-template.qmd)
+
+## Acknowledgements
+
+This work was supported by the National Science Foundation under Grant Nos #2215879, #2215920, and #2215709
