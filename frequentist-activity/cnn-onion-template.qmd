@@ -1,0 +1,54 @@
+---
+title: "CNN vs. The Onion"
+format: live-html
+date: "07/30/2025"
+date-modified: today
+date-format: long
+author:
+  - name: "Jim Scott"
+    affiliations:
+      - name: "Colby College"
+  - name: "Laurie Baker"
+    affiliations:
+      - name: "Bates College"
+  - name: "Mine Dogucu"
+    affiliations:
+      - name: "UC Irvine"
+engine: knitr
+webr:
+  channel-type: automatic
+filters:
+  - webr
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Activity Introduction
+
+
+::: {.callout-tip} 
+## Learning objectives
+
+By the end of the activity you'll be able to:
+
+-   ...
+
+:::
+
+
+
+
+
+```{webr, example code, fig.align = "center", fig.height = 5}
+
+2 + 2
+```
+
+
+::: {.callout-tip}
+### Reflection Questions:
+
+- Q1
+
+- Q2
+:::
