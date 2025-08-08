@@ -4,7 +4,105 @@
     "href": "index.html",
     "title": "cnn-onion",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\nBayesian Facilitator Guide"
+  },
+  {
+    "objectID": "manuscript/example-literature.html",
+    "href": "manuscript/example-literature.html",
+    "title": "cnn-onion",
+    "section": "",
+    "text": "Albert, J. (n.d.). TEACHING INTRODUCTORY STATISTICS FROM A BAYESIAN PERSPECTIVE.\nBárcena, M. J., Garín ,M. A., Martín ,A., Tusell ,F., & and Unzueta, A. (2019). A Web Simulator to Assist in the Teaching of Bayes’ Theorem. Journal of Statistics Education, 27(2), 68–78. https://doi.org/10.1080/10691898.2019.1608875\nEadie, G., Huppenkothen, D., Springford, A., & McCormick, T. (2019). Introducing Bayesian Analysis With m&m’s®: An Active-Learning Exercise for Undergraduates. Journal of Statistics Education, 27(2), 60–67. https://doi.org/10.1080/10691898.2019.1604106\nThe Design and Implementation of a Bayesian Data Analysis Lesson for Pre-Service Mathematics and Science Teachers. (n.d.). Retrieved April 23, 2025, from https://www.tandfonline.com/doi/full/10.1080/26939169.2024.2362148\nHoegh, A. (2020). Why Bayesian Ideas Should Be Introduced in the Statistics Curricula and How to Do So. Journal of Statistics Education, 28(3), 222–228. https://doi.org/10.1080/10691898.2020.1841591"
+  },
+  {
+    "objectID": "manuscript/example-literature.html#example-literature",
+    "href": "manuscript/example-literature.html#example-literature",
+    "title": "cnn-onion",
+    "section": "",
+    "text": "Albert, J. (n.d.). TEACHING INTRODUCTORY STATISTICS FROM A BAYESIAN PERSPECTIVE.\nBárcena, M. J., Garín ,M. A., Martín ,A., Tusell ,F., & and Unzueta, A. (2019). A Web Simulator to Assist in the Teaching of Bayes’ Theorem. Journal of Statistics Education, 27(2), 68–78. https://doi.org/10.1080/10691898.2019.1608875\nEadie, G., Huppenkothen, D., Springford, A., & McCormick, T. (2019). Introducing Bayesian Analysis With m&m’s®: An Active-Learning Exercise for Undergraduates. Journal of Statistics Education, 27(2), 60–67. https://doi.org/10.1080/10691898.2019.1604106\nThe Design and Implementation of a Bayesian Data Analysis Lesson for Pre-Service Mathematics and Science Teachers. (n.d.). Retrieved April 23, 2025, from https://www.tandfonline.com/doi/full/10.1080/26939169.2024.2362148\nHoegh, A. (2020). Why Bayesian Ideas Should Be Introduced in the Statistics Curricula and How to Do So. Journal of Statistics Education, 28(3), 222–228. https://doi.org/10.1080/10691898.2020.1841591"
+  },
+  {
+    "objectID": "frequentist-activity/cnn-onion-template.html",
+    "href": "frequentist-activity/cnn-onion-template.html",
+    "title": "CNN vs. The Onion",
+    "section": "",
+    "text": "Learning objectives\n\n\n\nBy the end of the activity you’ll be able to:\n\n…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReflection Questions:\n\n\n\n\nQ1\nQ2"
+  },
+  {
+    "objectID": "frequentist-activity/cnn-onion-template.html#activity-introduction",
+    "href": "frequentist-activity/cnn-onion-template.html#activity-introduction",
+    "title": "CNN vs. The Onion",
+    "section": "",
+    "text": "Learning objectives\n\n\n\nBy the end of the activity you’ll be able to:\n\n…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReflection Questions:\n\n\n\n\nQ1\nQ2"
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html",
+    "href": "bayesian-activity/cnn-onion-facilitator-guide.html",
+    "title": "CNN vs. The Onion Facilitator Guide",
+    "section": "",
+    "text": "This guide accompanies the CNN vs. The Onion - Beta Binomial activity, designed to help students explore the Bayesian updating process using real vs. fake news classification data. Students should enter the activity with a basic understanding of probability. This lesson will introduce how to construct and update Beta distributions as models for belief about a proportion.\n\n\n\n\n\n\nPre-Activity Checklist\n\n\n\n\nPrint out one copy of the CNN Onion Student Handout per student.\nTest the google form quiz link in the CNN vs. The Onion - Beta Binomial activity."
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html#overview",
+    "href": "bayesian-activity/cnn-onion-facilitator-guide.html#overview",
+    "title": "CNN vs. The Onion Facilitator Guide",
+    "section": "",
+    "text": "This guide accompanies the CNN vs. The Onion - Beta Binomial activity, designed to help students explore the Bayesian updating process using real vs. fake news classification data. Students should enter the activity with a basic understanding of probability. This lesson will introduce how to construct and update Beta distributions as models for belief about a proportion.\n\n\n\n\n\n\nPre-Activity Checklist\n\n\n\n\nPrint out one copy of the CNN Onion Student Handout per student.\nTest the google form quiz link in the CNN vs. The Onion - Beta Binomial activity."
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html#student-background-and-course-placement",
+    "href": "bayesian-activity/cnn-onion-facilitator-guide.html#student-background-and-course-placement",
+    "title": "CNN vs. The Onion Facilitator Guide",
+    "section": "Student Background and Course Placement",
+    "text": "Student Background and Course Placement\nThis activity is designed for students who have a foundational understanding of:\n\nBasic probability concepts (e.g., probability of success/failure) in a Binomial distribution\nWhat a probability distribution represents\nFamiliarity with the concept of conditional probability\n\nStudents do not need prior exposure to Bayesian statistics, but they should be comfortable with interpreting plots and understanding how beliefs or estimates can change with new information.\nWe expect that this activity would fit well in an Introduction to Probability and Statistics course particularly ones that includes elements of:\n\nStatistical Inference\nBayesian concepts\nApplied reasoning with real-world data\n\nIt could be introduced after students have learned about conditional probability and Bayes’ Rule.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this activity, students will be able to:\n\nDefine and distinguish between prior and posterior distributions.\nUse the Beta distribution to construct prior beliefs about a probability.\nApply Bayesian updating to revise beliefs with observed data.\nInterpret summary statistics (mean, mode, standard deviation) of Beta distributions.\nReflect on how prior information and data interact to shape posterior conclusions."
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html#activity-sequence",
+    "href": "bayesian-activity/cnn-onion-facilitator-guide.html#activity-sequence",
+    "title": "CNN vs. The Onion Facilitator Guide",
+    "section": "Activity Sequence",
+    "text": "Activity Sequence\n\n1. Introduce the Context\n\nPresent the quiz task: students will identify whether a headline came from CNN or The Onion.\nExplain that students will make a prior prediction, then update it using quiz results.\n\n\n\n2. Construct Priors\n\nStudents choose a prior model for the proportion of correct answers they expect people to get on the quiz and translate it into a Beta distribution.\n\nOptimistic: Beta(8, 3)\nUndecided: Beta(1, 1)\nPessimistic: Beta(5, 10)\nVery Optimistic: Beta(140, 10)\n\n\n\n\n3. Visualize Priors\n\nUse plot_beta() to examine shapes of priors.\nStudents compare their prior to reference priors and discuss informativeness.\n\n\n\n4. Take the Quiz\n\nStudents complete the quiz and count their correct responses.\n\n\n\n5. Update with Data\n\nStudents update their prior using their own score: plot_beta_binomial() and summarize_beta_binomial().\nStudents repeat the update process adding classmates’ scores (n = 30, then n = 45) tallying the correct responses each time.\n\n\n\n6. Update with the Class Data or the Provided Data\n\nUse the provided data or ask each student to share their score. Add these together. n will become 15 x number of students.\nStudents update their prior using the class score: plot_beta_binomial() and summarize_beta_binomial().\n\n\n\n7. Compare Posteriors\n\nVisual comparison: look at posterior distributions from different priors side by side.\nNumeric comparison: interpret changes in mean, mode, and standard deviation."
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html#reflection-guidance",
+    "href": "bayesian-activity/cnn-onion-facilitator-guide.html#reflection-guidance",
+    "title": "CNN vs. The Onion Facilitator Guide",
+    "section": "Reflection Guidance",
+    "text": "Reflection Guidance\n\n\n\n\n\n\nPrior Informativeness\n\n\n\n\nPrompt: Is your prior informative or vague?\nExample Responses:\n\n“My prior was vague because I used Beta(1,1).”\n“Beta(10, 3) was informative since I was confident in my guess.”\n\n\n\n\n\n\n\n\n\n\nPosterior Updates\n\n\n\n\nPrompt: How did the posterior change after seeing data?\nExample Responses:\n\n“My posterior mean increased because people did better than expected on the quiz.”\n“Even though my prior was optimistic, the data pulled the posterior lower because people did not as well as expected.”\n\n\n\n\n\n\n\n\n\n\nAdding More Data\n\n\n\n\nPrompt: What happens as you add more data?\nExample Responses:\n\n“The distribution became more concentrated.”\n“The standard deviation decreased.”\n“The posterior gets closer to the proportion (number correct/total questions) from the data”\n\n\n\n\n\n\n\n\n\n\nComparing Prior Models\n\n\n\n\nPrompt: How did different priors respond to the same data?\nExample Responses:\n\n“The optimistic prior resulted in a higher posterior mean than the undecided one.”\n“The undecided prior was the most influenced by the data.”\n\n\n\n\n\n\n\n\n\n\nBig Picture\n\n\n\n\nPrompt: What does this activity show about the role of prior models?\nExample Responses:\n\n“Priors matter when the data is limited.”\n“The more data we have, the more it outweighs our prior.”\n\n\n\n\n\n\n\n\n\n\nFurther Discussion Questions\n\n\n\n\nWhat would a prior look like that represents being totally uncertain?\nIn what scenarios might you want an informative prior?\nIf two people see the same data but have different priors, should they agree?\n\n\n\n\n\n\n\n\n\nTips\n\n\n\n\nCheck that students understand: the Beta distribution is a model for belief about a probability.\nReinforce that the prior is not “wrong” even if it differs from data, it reflects what we believed before seeing the data.\nEncourage collaborative discussion when comparing prior/posterior plots."
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html#common-questions-that-might-arise",
+    "href": "bayesian-activity/cnn-onion-facilitator-guide.html#common-questions-that-might-arise",
+    "title": "CNN vs. The Onion Facilitator Guide",
+    "section": "Common questions that might arise:",
+    "text": "Common questions that might arise:\n\n\n\n\n\n\nWhy is the Uniformed Distribution Beta(1, 1)\n\n\n\n\nBeta(1,1) is the uniform distribution over the interval [0,1]. This means that before seeing any data, we assign equal plausibility to all possible values of \\(\\pi\\), the probability that someone guesses a headline correctly.\nWe’re saying we have no reason to favor any particular value of \\(\\pi\\) between 0 and 1. In contrast, Beta(8,8) assumes some structure, it implies we already believe the success rate is centered around 0.5 with some confidence.\n\n\n\n\n\n\n\n\n\nHow to interpret a Density Plot\n\n\n\n\nStart by looking at the x-axis, which shows the possible values of the parameter (here, the probability \\(\\pi\\) of guessing correctly), and the y-axis, which shows the plausibility or density of those values.\nThe peak of the curve indicates the most likely value (the mode), and the width reflects uncertainty—narrow curves suggest high certainty, while wide curves indicate more uncertainty.\nThe area under the curve between two points represents how probable it is that the parameter falls in that range.\nWhen comparing prior and posterior distributions, look at how the curve shifts and narrows to see how beliefs change with data.\nAlways describe what you see: Is the distribution centered high or low? Is it narrow or wide? Did the data change the belief significantly?"
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html#references-and-acknowledgements",
+    "href": "bayesian-activity/cnn-onion-facilitator-guide.html#references-and-acknowledgements",
+    "title": "CNN vs. The Onion Facilitator Guide",
+    "section": "References and Acknowledgements",
+    "text": "References and Acknowledgements\n\nThis work was supported by the National Science Foundation under Grant Nos #2215879, #2215920, and #2215709.\nJohnson, A.A., Ott, M.Q., & Doğucu, M. (2022). Bayes Rules!: An Introduction to Applied Bayesian Modeling (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9780429288340. 📘\nDoğucu M, Johnson A, Ott M (2021). bayesrules: Datasets and Supplemental Functions from Bayes Rules! Book. R package version 0.0.2.9000. 🔗."
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-student-handout.html",
+    "href": "bayesian-activity/cnn-onion-student-handout.html",
+    "title": "CNN Onion Handout",
+    "section": "",
+    "text": "What was your initial prior belief about the proportion of quiz answers a person would get right?\n\n\nWhich predefined prior (Optimistic, Undecided, Pessimistic) did your belief most closely align with?\n\n\nWould you describe your prior as informative or vague? Why?\n\n\n\n\n\nLook at the plot of your prior distribution. What does it tell you about your expectations?\n\n\nHow would a more informative prior (e.g., Beta(140, 10)) affect the shape of the distribution compared to a vague one?\n\n\n\n\nFill out the Quiz Results table after taking the quiz\n\n\n\nParticipant\nCorrect\nIncorrect\n\n\n\n\nYour Score\n_______\n_________\n\n\nPerson on Your Left\n_______\n_________\n\n\nPerson on Your Right\n_______\n_________\n\n\nClass Total\n_______\n_________\n\n\n\n\nHow did your posterior distribution change after observing your own quiz results?\n\n\nHow did your posterior change when you added a classmate’s score? What about after pooling the full class data?\n\n\nWhat do you notice about how increasing the amount of data affects the posterior distribution?\n\n\n\n\n\nCompare your posterior with one of the predefined priors (Optimistic, Pessimistic, etc.). What are the differences in mean, mode, and standard deviation?\n\n\nWhat do these summary statistics tell you about your belief in someone guessing correctly after seeing the data?\n\n\n\n\n\nInspecting the updated posteriors, how did the posteriors change or differ based on the respective priors?\n\n\nWhat happened when you had a more informative prior, e.g. The Very Optimistic?\n\n\nLook back at the summary statistics that you calculated for the distributions. Choose one of the posteriors “Optimistic, Pessimistic, Undecided, Very Optimistic” and compare it with your own. What do each of the summary statistics (mean, mode, standard deviation) tell you about the probability of success after seeing the data?\n\n\nThink about your prior prediction and how it compared to the data.\n\n\nHow similar or different was your prior to the actual results?\n\n\nDid updating your beliefs with data change your thinking? In what way?\n\n\nIf you had chosen a different prior (e.g., more vague or more informative), how would your posterior have changed?\n\n\nWhat does this activity show about the role of prior knowledge or assumptions in data analysis?\n\nTake a few minutes to jot down your thoughts before share your ideas with a partner or group."
+  },
+  {
+    "objectID": "bayesian-activity/cnn-onion-student-handout.html#discussion-questions",
+    "href": "bayesian-activity/cnn-onion-student-handout.html#discussion-questions",
+    "title": "CNN Onion Handout",
+    "section": "",
+    "text": "What was your initial prior belief about the proportion of quiz answers a person would get right?\n\n\nWhich predefined prior (Optimistic, Undecided, Pessimistic) did your belief most closely align with?\n\n\nWould you describe your prior as informative or vague? Why?\n\n\n\n\n\nLook at the plot of your prior distribution. What does it tell you about your expectations?\n\n\nHow would a more informative prior (e.g., Beta(140, 10)) affect the shape of the distribution compared to a vague one?\n\n\n\n\nFill out the Quiz Results table after taking the quiz\n\n\n\nParticipant\nCorrect\nIncorrect\n\n\n\n\nYour Score\n_______\n_________\n\n\nPerson on Your Left\n_______\n_________\n\n\nPerson on Your Right\n_______\n_________\n\n\nClass Total\n_______\n_________\n\n\n\n\nHow did your posterior distribution change after observing your own quiz results?\n\n\nHow did your posterior change when you added a classmate’s score? What about after pooling the full class data?\n\n\nWhat do you notice about how increasing the amount of data affects the posterior distribution?\n\n\n\n\n\nCompare your posterior with one of the predefined priors (Optimistic, Pessimistic, etc.). What are the differences in mean, mode, and standard deviation?\n\n\nWhat do these summary statistics tell you about your belief in someone guessing correctly after seeing the data?\n\n\n\n\n\nInspecting the updated posteriors, how did the posteriors change or differ based on the respective priors?\n\n\nWhat happened when you had a more informative prior, e.g. The Very Optimistic?\n\n\nLook back at the summary statistics that you calculated for the distributions. Choose one of the posteriors “Optimistic, Pessimistic, Undecided, Very Optimistic” and compare it with your own. What do each of the summary statistics (mean, mode, standard deviation) tell you about the probability of success after seeing the data?\n\n\nThink about your prior prediction and how it compared to the data.\n\n\nHow similar or different was your prior to the actual results?\n\n\nDid updating your beliefs with data change your thinking? In what way?\n\n\nIf you had chosen a different prior (e.g., more vague or more informative), how would your posterior have changed?\n\n\nWhat does this activity show about the role of prior knowledge or assumptions in data analysis?\n\nTake a few minutes to jot down your thoughts before share your ideas with a partner or group."
+  },
+  {
+    "objectID": "data/student-survey.html",
+    "href": "data/student-survey.html",
+    "title": "cnn-onion",
+    "section": "",
+    "text": "The questions in this part of the homework/quiz relates to the CNN vs. Onion activity that you have completed.\nWhat aspects of this activity have impacted your learning positively?\nWhat aspects of this activity have impacted your learning negatively?\nWhat is your overall opinion of this activity?\nDo you have any recommendations on how this activity can be improved for future students?"
   },
   {
     "objectID": "about.html",
