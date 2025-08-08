@@ -1,24 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "cnn-onion",
+    "objectID": "data/student-survey.html",
+    "href": "data/student-survey.html",
+    "title": "CNN vs. Onion",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\nBayesian Facilitator Guide"
-  },
-  {
-    "objectID": "manuscript/example-literature.html",
-    "href": "manuscript/example-literature.html",
-    "title": "cnn-onion",
-    "section": "",
-    "text": "Albert, J. (n.d.). TEACHING INTRODUCTORY STATISTICS FROM A BAYESIAN PERSPECTIVE.\nBárcena, M. J., Garín ,M. A., Martín ,A., Tusell ,F., & and Unzueta, A. (2019). A Web Simulator to Assist in the Teaching of Bayes’ Theorem. Journal of Statistics Education, 27(2), 68–78. https://doi.org/10.1080/10691898.2019.1608875\nEadie, G., Huppenkothen, D., Springford, A., & McCormick, T. (2019). Introducing Bayesian Analysis With m&m’s®: An Active-Learning Exercise for Undergraduates. Journal of Statistics Education, 27(2), 60–67. https://doi.org/10.1080/10691898.2019.1604106\nThe Design and Implementation of a Bayesian Data Analysis Lesson for Pre-Service Mathematics and Science Teachers. (n.d.). Retrieved April 23, 2025, from https://www.tandfonline.com/doi/full/10.1080/26939169.2024.2362148\nHoegh, A. (2020). Why Bayesian Ideas Should Be Introduced in the Statistics Curricula and How to Do So. Journal of Statistics Education, 28(3), 222–228. https://doi.org/10.1080/10691898.2020.1841591"
-  },
-  {
-    "objectID": "manuscript/example-literature.html#example-literature",
-    "href": "manuscript/example-literature.html#example-literature",
-    "title": "cnn-onion",
-    "section": "",
-    "text": "Albert, J. (n.d.). TEACHING INTRODUCTORY STATISTICS FROM A BAYESIAN PERSPECTIVE.\nBárcena, M. J., Garín ,M. A., Martín ,A., Tusell ,F., & and Unzueta, A. (2019). A Web Simulator to Assist in the Teaching of Bayes’ Theorem. Journal of Statistics Education, 27(2), 68–78. https://doi.org/10.1080/10691898.2019.1608875\nEadie, G., Huppenkothen, D., Springford, A., & McCormick, T. (2019). Introducing Bayesian Analysis With m&m’s®: An Active-Learning Exercise for Undergraduates. Journal of Statistics Education, 27(2), 60–67. https://doi.org/10.1080/10691898.2019.1604106\nThe Design and Implementation of a Bayesian Data Analysis Lesson for Pre-Service Mathematics and Science Teachers. (n.d.). Retrieved April 23, 2025, from https://www.tandfonline.com/doi/full/10.1080/26939169.2024.2362148\nHoegh, A. (2020). Why Bayesian Ideas Should Be Introduced in the Statistics Curricula and How to Do So. Journal of Statistics Education, 28(3), 222–228. https://doi.org/10.1080/10691898.2020.1841591"
+    "text": "The questions in this part of the homework/quiz relates to the CNN vs. Onion activity that you have completed.\nWhat aspects of this activity have impacted your learning positively?\nWhat aspects of this activity have impacted your learning negatively?\nWhat is your overall opinion of this activity?\nDo you have any recommendations on how this activity can be improved for future students?"
   },
   {
     "objectID": "frequentist-activity/cnn-onion-template.html",
@@ -33,6 +19,13 @@
     "title": "CNN vs. The Onion",
     "section": "",
     "text": "Learning objectives\n\n\n\nBy the end of the activity you’ll be able to:\n\n…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReflection Questions:\n\n\n\n\nQ1\nQ2"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "bayesian-activity/cnn-onion-facilitator-guide.html",
@@ -98,17 +91,45 @@
     "text": "What was your initial prior belief about the proportion of quiz answers a person would get right?\n\n\nWhich predefined prior (Optimistic, Undecided, Pessimistic) did your belief most closely align with?\n\n\nWould you describe your prior as informative or vague? Why?\n\n\n\n\n\nLook at the plot of your prior distribution. What does it tell you about your expectations?\n\n\nHow would a more informative prior (e.g., Beta(140, 10)) affect the shape of the distribution compared to a vague one?\n\n\n\n\nFill out the Quiz Results table after taking the quiz\n\n\n\nParticipant\nCorrect\nIncorrect\n\n\n\n\nYour Score\n_______\n_________\n\n\nPerson on Your Left\n_______\n_________\n\n\nPerson on Your Right\n_______\n_________\n\n\nClass Total\n_______\n_________\n\n\n\n\nHow did your posterior distribution change after observing your own quiz results?\n\n\nHow did your posterior change when you added a classmate’s score? What about after pooling the full class data?\n\n\nWhat do you notice about how increasing the amount of data affects the posterior distribution?\n\n\n\n\n\nCompare your posterior with one of the predefined priors (Optimistic, Pessimistic, etc.). What are the differences in mean, mode, and standard deviation?\n\n\nWhat do these summary statistics tell you about your belief in someone guessing correctly after seeing the data?\n\n\n\n\n\nInspecting the updated posteriors, how did the posteriors change or differ based on the respective priors?\n\n\nWhat happened when you had a more informative prior, e.g. The Very Optimistic?\n\n\nLook back at the summary statistics that you calculated for the distributions. Choose one of the posteriors “Optimistic, Pessimistic, Undecided, Very Optimistic” and compare it with your own. What do each of the summary statistics (mean, mode, standard deviation) tell you about the probability of success after seeing the data?\n\n\nThink about your prior prediction and how it compared to the data.\n\n\nHow similar or different was your prior to the actual results?\n\n\nDid updating your beliefs with data change your thinking? In what way?\n\n\nIf you had chosen a different prior (e.g., more vague or more informative), how would your posterior have changed?\n\n\nWhat does this activity show about the role of prior knowledge or assumptions in data analysis?\n\nTake a few minutes to jot down your thoughts before share your ideas with a partner or group."
   },
   {
-    "objectID": "data/student-survey.html",
-    "href": "data/student-survey.html",
-    "title": "cnn-onion",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CNN vs. Onion",
     "section": "",
-    "text": "The questions in this part of the homework/quiz relates to the CNN vs. Onion activity that you have completed.\nWhat aspects of this activity have impacted your learning positively?\nWhat aspects of this activity have impacted your learning negatively?\nWhat is your overall opinion of this activity?\nDo you have any recommendations on how this activity can be improved for future students?"
+    "text": "[Some description]"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "index.html#bayesian-activity",
+    "href": "index.html#bayesian-activity",
+    "title": "CNN vs. Onion",
+    "section": "Bayesian Activity",
+    "text": "Bayesian Activity\nFacilitator Guide\nStudent Handout"
+  },
+  {
+    "objectID": "index.html#frequentist-activity",
+    "href": "index.html#frequentist-activity",
+    "title": "CNN vs. Onion",
+    "section": "Frequentist Activity",
+    "text": "Frequentist Activity\nStudent Handout"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "CNN vs. Onion",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThis work was supported by the National Science Foundation under Grant Nos #2215879, #2215920, and #2215709"
+  },
+  {
+    "objectID": "manuscript/example-literature.html",
+    "href": "manuscript/example-literature.html",
+    "title": "CNN vs. Onion",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Albert, J. (n.d.). TEACHING INTRODUCTORY STATISTICS FROM A BAYESIAN PERSPECTIVE.\nBárcena, M. J., Garín ,M. A., Martín ,A., Tusell ,F., & and Unzueta, A. (2019). A Web Simulator to Assist in the Teaching of Bayes’ Theorem. Journal of Statistics Education, 27(2), 68–78. https://doi.org/10.1080/10691898.2019.1608875\nEadie, G., Huppenkothen, D., Springford, A., & McCormick, T. (2019). Introducing Bayesian Analysis With m&m’s®: An Active-Learning Exercise for Undergraduates. Journal of Statistics Education, 27(2), 60–67. https://doi.org/10.1080/10691898.2019.1604106\nThe Design and Implementation of a Bayesian Data Analysis Lesson for Pre-Service Mathematics and Science Teachers. (n.d.). Retrieved April 23, 2025, from https://www.tandfonline.com/doi/full/10.1080/26939169.2024.2362148\nHoegh, A. (2020). Why Bayesian Ideas Should Be Introduced in the Statistics Curricula and How to Do So. Journal of Statistics Education, 28(3), 222–228. https://doi.org/10.1080/10691898.2020.1841591"
+  },
+  {
+    "objectID": "manuscript/example-literature.html#example-literature",
+    "href": "manuscript/example-literature.html#example-literature",
+    "title": "CNN vs. Onion",
+    "section": "",
+    "text": "Albert, J. (n.d.). TEACHING INTRODUCTORY STATISTICS FROM A BAYESIAN PERSPECTIVE.\nBárcena, M. J., Garín ,M. A., Martín ,A., Tusell ,F., & and Unzueta, A. (2019). A Web Simulator to Assist in the Teaching of Bayes’ Theorem. Journal of Statistics Education, 27(2), 68–78. https://doi.org/10.1080/10691898.2019.1608875\nEadie, G., Huppenkothen, D., Springford, A., & McCormick, T. (2019). Introducing Bayesian Analysis With m&m’s®: An Active-Learning Exercise for Undergraduates. Journal of Statistics Education, 27(2), 60–67. https://doi.org/10.1080/10691898.2019.1604106\nThe Design and Implementation of a Bayesian Data Analysis Lesson for Pre-Service Mathematics and Science Teachers. (n.d.). Retrieved April 23, 2025, from https://www.tandfonline.com/doi/full/10.1080/26939169.2024.2362148\nHoegh, A. (2020). Why Bayesian Ideas Should Be Introduced in the Statistics Curricula and How to Do So. Journal of Statistics Education, 28(3), 222–228. https://doi.org/10.1080/10691898.2020.1841591"
   }
 ]
