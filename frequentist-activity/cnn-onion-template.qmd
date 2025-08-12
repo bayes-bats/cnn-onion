@@ -25,30 +25,147 @@ filters:
 
 ## Activity Introduction
 
-
-::: {.callout-tip} 
+::: callout-tip
 ## Learning objectives
 
-By the end of the activity you'll be able to:
+By the end of the activity you'll be able to:  
+  
+  
+  
+-  1.  Review distributions  
+-  2.  Use basic R commands to simulate data  
+-  3.  Conduct an informal hypothesis test  
+-  4.  Conduct a formal hypothesis test  
 
--   ...
+# CNN vs The Onion  
+
+CNN (the Cable News Network) is widely considered a reputable news source.  The Onion, on the other hand, is (according to Wikipedia) “an American news satire organization.  It is an entertainment newspaper and a website featuring satirical articles reporting on international, national, and local news.”  Another way of putting it - The Onion is “fake news” for entertainment purposes.  
+
+ 
+In this lab you will assess your ability to determine real news stories published on cnn.com from fake news stories published on theonion.com.  
+
+ 
+Each of you will take a quiz consisting of 15 questions.   Each question has the same possible answers:  CNN	or The Onion.  
+
+ 
+Let $\hat{p}$ = the proportion of questions you answer correctly. 
+
+**Question 1:**  Make a guess.  What do you think $\hat{p}$ will be for you (i.e. before looking at the quiz, what proportion of questions do you think you’ll answer correctly)?  
+
+**Question 2:**  How do you think p-hat is distributed?  In other words, what values can $\hat{p}$ be?  Are they all equally likely?  What shape will it have?  On a sheet of paper, draw a picture of what you think the distribution of $\hat{p}$ will look like.  
+
+**Question 3:**  Take the Quiz.  What proportion did you answer correctly?  
+
+**Question 4:**  Do you think your strategy for choosing the correct answer is better than just guessing (e.g. choosing a response randomly)?  Suppose that instead of thinking about each question and answering to the best of your ability, you randomly guessed answers (e.g. you flipped a coin – heads = CNN, tails = The Onion).  Under this scenario, what would you expect $\hat{p}$ to be?  Discuss your answers with a neighbor.  
+
+**Question 5:**  Suppose we kept taking similar quizzes, but each time, we employed the random guessing strategy.  What would the distribution of $\hat{p}$ look like?  What values of $\hat{p}$ would be typical?  What values would be unusual?  
+
+**Question 6:**  Can you think of a way to simulate such a distribution?  Discuss with a neighbor.  
+
+It turns out we can use a computer to easily simulate what the distribution of p-hat would look like in such a scenario using the following code.  Below we’ll simulate the distribution of $\hat{p}$ for 1000 students taking a 15 question quiz using the guessing strategy (probability of getting a question correct is 0.5).  
+
+**Question 7:**.  Run the simulation and examine the shape.  How would you describe it?  Is it similar to what you predicted?
 
 :::
-
-
-
-
 
 ```{webr, example code, fig.align = "center", fig.height = 5}
 
-2 + 2
+# ‘setting the seed’ will ensure that everyone generates the same set of random numbers - assuming everyone sets the seed to the same value
+
+set.seed(123)
+
+# Simulate the data using the binomial distribution, assuming random guessing, and store it in ‘sim.data’:
+#
+#   n=1000 quizzes,`  
+#   q=15 questions per quiz,`  
+#   p=chance of getting correct answer = 0.5`  
+#
+#   rbinom(n, q, p)
+
+sim.data <- rbinom(1000,15,0.5)/15
+
+# create a histogram of the simulated data with bin widths of 0.1
+
+hist(sim.data, breaks = seq(0.05,0.95, 0.1), xlab="Proportion Correct")
+
 ```
 
+**Question 8:**.  Now consider your value of $\hat{p}$ (from question 3) and compare it to the simulated distribution.  Where does it fall?  Is it close to the middle or is it out towards an extremity of the distribution?  
 
-::: {.callout-tip}
-### Reflection Questions:
+If your value of $\hat{p}$ falls close to the center of  values from the simulated distribution, then your method of guessing is consistent with the random guessing strategy (i.e. your method of choosing answers is no better than just guessing).  However, if your value of $\hat{p}$ is closer to one of the tails of the simulated distribution, then your method of guessing is not consistent with the random guessing strategy (i.e. your method of choosing the answer is better (or worse)  than just guessing.  
 
-- Q1
+You’ve just conducted an informal hypothesis test!  
 
-- Q2
+## Explanation:
+In statistics, hypothesis tests allow us to test whether a particular value for a parameter is plausible based on our sample data.  We hypothesize a specific value for the parameter of interest, and then determine the probability of observing data as or more extreme as the data  that were actually obtained assuming our hypothesized value is correct.  If this probability is low, it means our observed data are unlikely using the assumed parameter value.  In other words, the assumed parameter value is not plausible.  On the other hand, if the probability is high, it means our observed data are typical using the assumed parameter value – it is plausible.  
+
+The probability described above has come to be known as a p-value.  A p-value is a conditional probability.  It tells us the probability of observing the data as or more extreme as the data  that were actually obtained conditional on our hypothesized parameter value being true.  
+
+There are a few common steps that you’ll need to complete each time you conduct a hypothesis test:  
+
+1.  State the parameter of interest  
+2.  State a null and an alternative hypothesis  
+3.  Check conditions for the test  
+4.  Determine the p-value  
+5.  Summarize the results of the test without using statistical jargon  
+
+**Parameter**  
+Let’s do an example using the CNN/Onion data.  First let’s define our population and parameter of interest.  
+
+population = all students at this school/university that have taken or our taking this course  
+
+*p* = underlying probability of correctly answering a question on the CNN/ONION quiz  
+
+**Hypotheses**  
+If we were just guessing at the answers and not using any strategy, we’d expect to get about half of the questions right.  So *p* = 0.50.  Is this a plausible value for *p*?  Or might it be higher since students presumably are not just guessing?   Suggest an appropriate null and an alternative hypothesis for this test. (Hint: when testing a proportion, the null hypothesis should always include the parameter of interest and specify the assumed value for the parameter).  
+
+**Ho:**  
+*p* = 0.50  
+
+**Ha:**  
+*p* > 0.50  
+
+**Conditions**  
+The conditions required for hypothesis testing to be valid vary based on the parameter(s) of interest and the test being conducted.  When testing a single proportion, the sample needs to be “large”.  In our example the sample refers to the number of questions on the quiz.  How large the sample needs to be depends on what the underlying value of *p* is.  If *p* is close to 0.5, the sample size doesn’t need to be as large.  However, if *p* is closer to 0 or 1.0, then the sample size needs to be much larger.  Where the data come from also matters.  Is it a representative sample from the population of interest (great!), or not?  More generally, these types of hypothesis tests will work well when the randomization distribution is approximately bell-shaped and symmetric (see below).  
+
+**P-value**  
+One way to obtain the p-value for this test is to simulate what the distribution of our sample statistic would look like if the null hypothesis were true (known as a randomization test; the simulated distribution is known as a randomization distribution).  Once we have the randomization distribution, we use it to find the probability of getting a sample statistic at least as extreme as the one that was actually observed.  This value is the p-value of the test.  For example, suppose I took the quiz and got 9/15 headlines correct, using:
+
 :::
+
+```{webr, example code2, fig.align = "center", fig.height = 5}
+
+set.seed(123)
+
+# simulate the randomization distribution and store it in sim.data 
+
+sim.data <- rbinom(1000,15,0.5)/15
+
+# store my observed proportion in my.prop
+ 
+my.prop <- c(9/15)
+
+# determine the proportion of times, out of 1000, that a value in sim.data was greater than or equal to my observed proportion 
+ 
+sum(sim.data >= my.prop)/1000
+
+
+```
+
+I find the area greater than or equal to 9/15 in a randomization distribution to be 0.298 (you should get the same value if you used set.seed(123))
+ 
+**Summary**  
+Since this probability isn’t very small I would conclude that my data are consistent with the null hypothesis, meaning my strategy of choosing the right answer is consistent with the guessing strategy (i.e. my strategy is no better than what I’d expect to get by just guessing).  
+
+There is also a way to conduct this test using the binom.test command in R.  This test relies on theoretical probabilities derived from the binomial distribution.  The command:  
+
+`binom.test(9,15,0.5, alternative = “greater”)`  should produce analogous results to the test described above.
+
+```{webr, example code3, fig.align = "center", fig.height = 5}
+
+set.seed(123)
+
+binom.test(9,15,0.5, alternative = "greater")
+
+```
+
