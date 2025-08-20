@@ -144,6 +144,7 @@ sim.data <- rbinom(1000,15,0.5)/15
 # store my observed proportion in my.prop
  
 my.prop <- c(9/15)
+my.prop
 
 # determine the proportion of times, out of 1000, that a value in sim.data was greater than or equal to my observed proportion 
  
