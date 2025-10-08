@@ -25,7 +25,7 @@ editor: visual
 This guide accompanies the [*CNN vs. The Onion - Beta Binomial*](https://bayes-bats.github.io/cnn-onion/cnn-onion-beta-binomial.html) activity, designed to help students explore the Bayesian updating process using real vs. fake news classification data. Students should enter the activity with a basic understanding of probability. This lesson will introduce how to construct and update Beta distributions as models for belief about a proportion.
 
 ::: {.callout-important title="Pre-Activity Checklist"}
--   Print out one copy of the [CNN Onion Student Handout](https://bayes-bats.github.io/cnn-onion/cnn-onion-student-handout.pdf) per student.
+-   Print out one copy of the [CNN Onion Student Handout](https://bayes-bats.github.io/cnn-onion/cnn-onion-student-handout.html) per student.
 -   Test the google form quiz link in the [*CNN vs. The Onion - Beta Binomial*](https://bayes-bats.github.io/cnn-onion/cnn-onion-beta-binomial.html) activity.
 :::
 

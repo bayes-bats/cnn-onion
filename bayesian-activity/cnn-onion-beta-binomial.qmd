@@ -1,0 +1,780 @@
+---
+title: "CNN vs. The Onion - Beta Binomial"
+format: live-html
+date: "10/07/2024"
+date-modified: today
+date-format: long
+author:
+  - name: "Laurie Baker"
+    affiliations:
+      - name: "Bates College"
+  - name: "Jim Scott"
+    affiliations:
+      - name: "Colby College"
+  - name: "Mine Dogucu"
+    affiliations:
+      - name: "UC Irvine"
+engine: knitr
+webr:
+  channel-type: automatic
+filters:
+  - webr
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Activity Introduction
+
+The goal of this activity is to explore how prior beliefs, what we think is probable before seeing any data, can influence the conclusions we draw after seeing new evidence: our posterior beliefs. To make things interesting, we will use a quiz where you'll try to tell whether a headline came from CNN (a real news site) or The Onion (a fake, satirical news site).
+
+Before taking the quiz, you'll think about how many headlines you expect a person might guess correctly, and you'll turn that guess into a *prior model*, or starting point for your beliefs. Then, you'll update your beliefs using data from actual quiz results and arrive at a *posterior model*. You will compare three different prior models representing other beliefs: someone expecting a person to guess most answers correctly (optimistic), someone undecided (no prior knowledge) about whether a person will guess many right or wrong (undecided), and someone expecting to guess most answers incorrectly (pessimistic) about how many answers they will get correct in the game.
+
+::: {.callout-tip} 
+## Learning objectives
+
+By the end of the activity you'll be able to:
+
+-   Construct prior and posterior models
+
+-   See how models update when we get new information
+
+-   Make and interpret plots of different prior and posterior models
+
+-   Calculate and compare summary statistics like the mean, mode, and standard deviation of these models.
+
+:::
+
+
+
+Let's dive in and see how well we can guess the news from fiction and learn about Bayesian thinking along the way!
+
+## CNN vs The Onion
+
+CNN (the Cable News Network) is widely considered a reputable news source. The Onion, on the other hand, is (according to Wikipedia) “an American news satire organization. It is an entertainment newspaper and a website featuring satirical articles reporting on international, national, and local news.” Another way of putting it - The Onion is “fake news” for entertainment purposes.
+
+In this exercise you will assess people's ability to determine real news stories published on [cnn.com](cnn.com) from fake news stories published on [theonion.com](theonion.com).
+
+![Frontpage of the Onion. Photo: Casey Bisson, via Flickr](../images/the_onion.jpg){fig-alt="Front page of Onion Newspaper: Headline reads Wikipedia Celebrates 750 Years of American Independence"}
+
+## Packages
+
+```{r packages, message = FALSE}
+library(tidyverse)
+library(bayesrules)
+library(gridExtra)
+```
+
+# Code Set Up
+
+::: {.callout-important collapse="true"}
+
+## Run this set up code to load the functions from the `bayesrules` package first. There is no need to understand this code.
+
+The package Bayes Rule is not available in the webr server at this time, so we will include the functions here.
+
+<!-- ```{webr setup-adam} -->
+<!-- source("https://raw.githubusercontent.com/agmath/Bayes-BATS-tier2/refs/heads/main/bayesrulesfunctions.R") -->
+
+<!-- print("I've made plot_beta_binomial(), summarise_beta_binomial(), and plot_beta_ci() available to you!") -->
+<!-- ``` -->
+
+
+```{webr setup}
+
+library(tidyverse)
+library(gridExtra)
+
+#' Plot a Beta-Binomial Bayesian Model
+#'
+#' Consider a Beta-Binomial Bayesian model for parameter \eqn{\pi} with 
+#' a Beta(alpha, beta) prior on \eqn{\pi} and Binomial likelihood with n trials
+#' and y successes. Given information on the prior (alpha and data) and data (y and n),
+#' this function produces a plot of any combination of the corresponding prior pdf, 
+#' scaled likelihood function, and posterior pdf.  All three are included by default.
+#'
+#' @param alpha,beta positive shape parameters of the prior Beta model
+#' @param y observed number of successes
+#' @param n observed number of trials
+#' @param prior a logical value indicating whether the prior model should be plotted
+#' @param likelihood a logical value indicating whether the scaled likelihood should be plotted
+#' @param posterior a logical value indicating whether posterior model should be plotted
+#'
+#' @return a ggplot
+#' @export
+#' @import ggplot2
+#' @importFrom stats dbeta dbinom integrate
+#' @examples
+#'
+#' plot_beta_binomial(alpha = 1, beta = 13, y = 25, n = 50)
+#' plot_beta_binomial(alpha = 1, beta = 13, y = 25, n = 50, posterior = FALSE)
+#' 
+plot_beta_binomial <- function (alpha,
+                                beta,
+                                y = NULL,
+                                n = NULL,
+                                prior = TRUE,
+                                likelihood = TRUE,
+                                posterior = TRUE){
+  if (is.null(y) | is.null(n))
+    warning("To visualize the posterior,
+            specify data y and n")
+
+  g <- ggplot(data = data.frame(x = c(0, 1)), aes(x)) +
+    labs(x = expression(pi),
+         y = "density") +
+    scale_fill_manual("",
+                      values = c(prior = "#f0e442",
+                                 `(scaled) likelihood` = "#0071b2",
+                                 posterior = "#009e74"),
+                      breaks = c("prior",
+                                 "(scaled) likelihood",
+                                 "posterior"))
+  
+  if (prior == TRUE) {
+    g <- g +
+      stat_function(fun = dbeta,
+                           args = list(shape1 = alpha,
+                                       shape2 = beta)) +
+      stat_function(fun = dbeta,
+                    args = list(shape1 = alpha,
+                                shape2 = beta),
+                    geom = "area",
+                    alpha = 0.5,
+                    aes(fill = "prior"))
+    }
+
+  if (!is.null(y) & !is.null(n)) {
+    alpha_post <- alpha + y
+    beta_post <- beta + n - y
+    y_data <- y
+    like_scaled <- function(x) {
+      like_fun <- function(x) {
+        dbinom(x = y_data, size = n, prob = x)
+      }
+      scale_c <- integrate(like_fun, lower = 0, upper = 1)[[1]]
+      like_fun(x)/scale_c
+    }
+  }
+  if (!is.null(y) & !is.null(n) & (likelihood != FALSE)) {
+    g <- g +
+      stat_function(fun = like_scaled) +
+      stat_function(fun = like_scaled,
+                    geom = "area",
+                    alpha = 0.5,
+                    aes(fill = "(scaled) likelihood"))
+  }
+  if (!is.null(y) & !is.null(n) & posterior == TRUE) {
+    g <- g +
+      stat_function(fun = dbeta,
+                    args = list(shape1 = alpha_post,
+                                shape2 = beta_post)) +
+      stat_function(fun = dbeta,
+                    args = list(shape1 = alpha_post,
+                                shape2 = beta_post),
+                    geom = "area", alpha = 0.5,
+                    aes(fill = "posterior"))
+  }
+  g
+} # end of function
+
+#' @title Plot a Beta Model for \eqn{\pi} 
+#'
+#' @description Plots the probability density function (pdf) for
+#' a Beta(alpha, beta) model of variable \eqn{\pi}.
+#'
+#' @param alpha,beta positive shape parameters of the Beta model
+#' @param mean,mode a logical value indicating whether to display the model mean and mode
+#'
+#' @return A density plot for the Beta model.
+#' @export
+#' @import ggplot2
+#' @importFrom stats dbeta
+#'
+#' @examples
+#' plot_beta(alpha = 1, beta = 12, mean = TRUE, mode = TRUE)
+plot_beta <- function(alpha, beta, mean = FALSE, mode = FALSE){
+  
+  
+  p <- ggplot(data = data.frame(x = c(0, 1)),
+              aes(x)) +
+    stat_function(fun = stats::dbeta,
+                  n = 101,
+                  args = list(shape1 = alpha,
+                              shape2=beta)) +
+    labs(x = expression(pi),
+         y = expression(paste("f(",pi,")")))
+
+  
+  if (mean == TRUE & mode == FALSE){
+    mean <- alpha / (alpha + beta)
+    
+    p <- p +
+      geom_segment(aes(x = mean, y = 0, 
+                       xend = mean, 
+                       yend = dbeta(mean, alpha, beta),
+                       linetype = "mean")) +
+      scale_linetype_manual(values = c(mean = "solid")) +
+      theme(legend.title = element_blank())
+  }
+  
+  if (mean == FALSE & mode == TRUE){
+    mode <- (alpha - 1)/(alpha + beta - 2)
+    
+    p <- p +
+      geom_segment(aes(x = mode, y = 0, 
+                       xend = mode, 
+                       yend = dbeta(mode, alpha, beta), 
+                       linetype = "mode"))+
+      scale_linetype_manual(values = c(mode = "dashed")) +
+      theme(legend.title = element_blank())
+    
+    
+  }
+  
+  if (mean == TRUE & mode == TRUE){
+    mean <- alpha / (alpha + beta)
+    mode <- (alpha - 1)/(alpha + beta - 2)
+    
+    
+    p <- p +
+      geom_segment(aes(x = mean, y = 0, 
+                       xend = mean, 
+                       yend = dbeta(mean, alpha, beta),
+                       linetype = "mean")) +
+      geom_segment(aes(x = mode, y = 0, 
+                       xend = mode, 
+                       yend = stats::dbeta(mode, alpha, beta), 
+                       linetype = "mode"))+
+      scale_linetype_manual(values = c(mean = "solid", mode = "dashed")) +
+      theme(legend.title = element_blank())
+  }
+p
+}
+
+#' @title Summarize a Beta-Binomial Bayesian model
+#' 
+#' @description Consider a Beta-Binomial Bayesian model for parameter \eqn{\pi} with 
+#' a Beta(alpha, beta) prior on \eqn{\pi} and Binomial likelihood with n trials
+#' and y successes. Given information on the prior (alpha and data) and data (y and n),
+#' this function summarizes the mean, mode, and variance of the 
+#' prior and posterior Beta models of \eqn{\pi}.
+#' 
+#' @param alpha,beta positive shape parameters of the prior Beta model
+#' @param y number of successes
+#' @param n number of trials
+#'
+#' @return a summary table
+#' @export
+#'
+#' @examples 
+#' summarize_beta_binomial(alpha = 1, beta = 15, y = 25, n = 50)
+summarize_beta_binomial <- function (alpha, 
+                                     beta, 
+                                     y = NULL, 
+                                     n = NULL)
+{
+  if (is.null(y) | is.null(n))
+    warning("To summarize the posterior, 
+            specify data y and n")
+  beta_mean <- function(a, b) {
+    a/(a + b)
+  }
+  beta_mode <- function(a, b) {
+    if(a < 1 & b <1){
+      mode <- "0 and 1"
+    }else if (a <= 1 & b > 1){
+      mode <- 0
+    }else if (a > 1 & b < 1){
+      mode <- 1
+    }
+    else{
+      mode <- (a - 1)/(a + b - 2)
+    }
+  }
+  beta_var <- function(a, b) {
+    a * b/((a + b)^2 * (a + b + 1))
+  }
+  prior_mean <- beta_mean(alpha, beta)
+  prior_mode <- beta_mode(alpha, beta)
+  prior_var <- beta_var(alpha, beta)
+  prior_sd  <- sqrt(prior_var)
+  if (is.null(y) & is.null(n)) {
+    return(data.frame(model = c("prior"), 
+                      alpha = alpha,
+                      beta = beta, 
+                      mean = prior_mean, 
+                      mode = prior_mode,
+                      var = prior_var,
+                      sd = prior_sd))
+  }
+  else {
+    post_alpha <- y + alpha
+    post_beta <- n - y + beta
+    post_mean <- beta_mean(post_alpha, post_beta)
+    post_mode <- beta_mode(post_alpha, post_beta)
+    post_var  <- beta_var(post_alpha, post_beta)
+    post_sd   <- sqrt(post_var)
+    return(data.frame(model = c("prior", "posterior"), 
+                      alpha = c(alpha, post_alpha), 
+                      beta = c(beta, post_beta), 
+                      mean = c(prior_mean, post_mean), 
+                      mode = c(prior_mode, post_mode), 
+                      var = c(prior_var, post_var),
+                      sd = c(prior_sd, post_sd)))
+  }
+}
+
+cnn_onion <- data.frame(student = rep(1:100, each = 15), question = rep(1:15, times = 100), correct = rbinom(n = 15*100, size = 1, prob = 0.65), year = rep(2010:2024, each = 15, times = 100), institution = rep("Colby", times = 15*100)) # We will replace this with actual data
+
+
+```
+
+:::
+
+## Priors
+
+The CNN vs. The Onion quiz consists of 15 questions. Each question has the same possible answers: CNN or The Onion. Before we take the quiz, think about what proportion of questions you expect someone to guess correctly on the quiz. You might think about a person's ability to determine fact from fiction or their familiarity with CNN and The Onion.
+
+Let $\pi$ be the proportion of correct answers a person guesses right in the CNN vs the Onion quiz. Keeping that number in mind, let's explore in the table below, three different priors for $\pi$
+
+| Optimistic  | Undecided  | Pessimistic |
+|-------------|------------|-------------|
+| Beta(8, 3) | Beta(1, 1) | Beta(5, 10) |
+
+## Why do we use the Beta distribution?
+
+The **Beta distribution** is commonly used as a prior for proportions because it is defined on the interval $[0, 1]$, just like any probability.
+
+Its two shape parameters $\alpha$ and $\beta$ can be interpreted as representing **prior pseudo-observations**:
+
+-   $\alpha - 1$: prior successes
+-   $\beta - 1$: prior failures
+
+These shape parameters not only determine the mean of the distribution (calculated as $\alpha / (\alpha + \beta)$ but also control its skewness and informativeness.
+
+Different values for $\alpha$ and $\beta$ lead to different shapes, skewness, and central tendencides of the Beta distribution. See if you can pick out some general patterns with the relationship between $\alpha$ and $\beta$ in the plot below:
+
+
+```{r echo=FALSE}
+library(tidyverse)
+
+# Define a function to plot beta distributions with mean and mode
+plot_beta <- function(alpha, beta) {
+  df <- tibble(pi = seq(0, 1, length.out = 1000)) %>%
+    mutate(density = dbeta(pi, alpha, beta))
+
+  mean_val <- alpha / (alpha + beta)
+  if (alpha > 1 && beta > 1) {
+    mode_val <- (alpha - 1) / (alpha + beta - 2)
+  } else {
+    mode_val <- NULL  # set to NULL so it doesn't trigger ggplot error
+  }
+
+  p <- ggplot(df, aes(x = pi, y = density)) +
+    geom_line(color = "black", linewidth = 1) +
+    geom_vline(xintercept = mean_val, color = "blue", linetype = "solid", linewidth = 0.8) +
+    labs(title = glue::glue("Beta({alpha}, {beta})"), x = expression(pi), y = "Density") +
+    theme_minimal()
+
+  if (!is.null(mode_val)) {
+    p <- p + geom_vline(xintercept = mode_val, color = "blue", linetype = "dashed", linewidth = 0.8)
+  }
+
+  return(p)
+}
+
+
+
+# Create the 9 beta plots
+betas <- list(
+  c(1, 5), c(1, 2), c(3, 7),
+  c(1, 1), c(5, 5), c(20, 20),
+  c(7, 3), c(2, 1), c(5, 1)
+)
+
+plots <- map(betas, ~ plot_beta(.x[1], .x[2]))
+
+# Arrange in 3x3 grid
+library(patchwork)
+wrap_plots(plots, ncol = 3)
+```
+
+::: {.callout-note title="Questions"}
+What happens when:
+
+- $\alpha > \beta$
+
+- $\alpha < \beta$
+
+- $\alpha = \beta$
+
+What happens as $\alpha$ and $\beta$ get larger and further apart?
+:::
+
+::: {.callout-tip title="Answers" collapse="true"}
+### Skewness and Symmetry
+
+- If $\alpha < \beta$, the distribution is **right-skewed**, suggesting a belief that the proportion is likely to be low (e.g., `Beta(1, 5)`).
+
+- If $\alpha > \beta$, the distribution is **left-skewed**, placing more weight on higher proportions (e.g., `Beta(5, 1)`).
+
+- If $\alpha = \beta$, the distribution is **symmetric** and centered at 0.5 (e.g., `Beta(5, 5)`).
+
+The further apart $\alpha$ and $\beta$ are, the more skewed the distribution becomes. Symmetric models like `Beta(20, 20)` or `Beta(5, 5)` show increasingly narrow concentration around the mean as the total number of pseudo-observations $\alpha + \beta$ increases.
+
+:::
+
+### Plotting the Priors
+
+```{r echo = FALSE, fig.align='center', fig.height=6.5, fig.width=13}
+
+optimistic <- plot_beta(8, 3) +
+  labs(title = "Optimistic")
+
+undecided <- plot_beta(1, 1) +
+  labs(title = "Undecided")
+
+pessimistic <- plot_beta(5, 10) +
+  labs(title = "Pessimistic")
+
+gridExtra::grid.arrange(optimistic, undecided, pessimistic, ncol = 3)
+```
+
+### Where does your prior fall?
+
+Returning to your own prior, replace `my_alpha` and `my_beta` with the $\alpha$ and $\beta$ from your prior distribution.
+
+```{webr}
+
+my_prior <- plot_beta(alpha = my_alpha, beta = my_beta) +
+  labs(title = "My Prediction")
+
+my_prior
+```
+
+Looking at the graph of your prior, which person is your prior most similar to: Optimistic, Undecided or Pessimistic?
+
+::: {.callout-note}
+### Vocabulary
+
+We often describe priors in terms of how much information they give about the unknown variable. Priors are often described as:
+
+-   **Informative prior:** An informative prior reflects specific information about the unknown variable with high certainty (i.e. low variability).
+
+-   **Vague (diffuse) prior:** A vague or diffuse prior reflects little specific information about the unknown variable. A flat prior, which assigns equal prior plausibility to all possible values of the variable, is a special case.
+:::
+
+Let's take a look at a highly informative prior from someone who is *very optimistic* about individuals getting answers correct.
+
+
+```{webr, very optimistic, fig.align = "center", fig.height = 5}
+
+plot_beta(alpha = 140, beta = 10)  +
+  labs(title = "Very Optimistic")
+```
+
+
+::: {.callout-tip}
+### Reflection:
+
+Referring to your Reflection handout, write down your answers to the following questions:
+
+- What do you notice about the very optimistic prior. Is it more informative? What do you notice about the plot? 
+- How would you classify your prior? Is it informative or vague? Why?
+
+:::
+
+## Updating with data
+
+-   Based on observed data, we will update our posterior understanding using the four prior models and our own prior model. We will do this with our own score, our neighbor's scores, and the class or dataset score.
+
+-   Next, we calculate the summary statistics for the prior and posterior for all four priors using the function `summarize_beta_binomial`:
+
+
+::: {.callout-note}
+### summarize_beta_binomial
+
+-   `summarize_beta_binomial(alpha, beta, y = NULL, n = NULL)` function summarizes the mean, mode, and variance of the prior and posterior Beta models of $\pi$.
+
+-   Arguments:
+
+    -   `alpha, beta`: positive shape parameters of the prior Beta model
+    -   `y`: number of successes
+    -   `n`: number of trials
+    
+:::
+
+-   Next, we plot the prior, likelihood, and the posterior for all four people.
+
+-   Lastly, we examine the effect of different priors on the posterior.
+
+## Take the quiz
+
+Let's take the quiz and add our data to the dataset of trials and successes for a person taking this quiz.
+
+Each of you will take a quiz consisting of 15 questions. Each question has the same possible answers: CNN or The Onion. You can take the quiz through our [google form](https://forms.gle/eVvFHZQwvtsBYa9r9):
+
+```{=html}
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeNADV2SfZbCNZRcwZ_2oaP1eBh8rgXKV_WKxXyQR-5QGEBlA/viewform?embedded=true" width="640" height="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+```
+
+Note down how many you get correct. We will compare this with our neighbors and pool data from the class. 
+
+
+## Adding data
+
+Choose the priors that interest you and we will update them as follows below:
+
+1. Add your quiz data
+
+Let's update the prior model with some data. Add the number you got correct and enter your prior from before. Your n column should be 15 to reflect that you answered 15 questions.
+
+2. Compare with your classmates
+
+* Let's now update your prior with your classmate to your **left's** score. Your `n` column should now be 30 to reflect the two quizzes. 
+
+* Let's now update your prior with your classmate to your **right's** score. Your `n` column should now be 45 to reflect the three quizzes. 
+
+3. Finally, we will compare to the full class data. This will require tallying all the scores from all students. 
+
+## Calculating the summary statistics and plotting the distribution
+
+```{webr}
+num_correct <- # Add your code here
+total_questions <- # Add your code here
+```
+
+
+:::{.callout-note collapse="true"}
+
+### The Optimist
+
+```{webr}
+summarize_beta_binomial(alpha = 14, beta = 1, y = num_correct, n = total_questions)
+
+plot_beta_binomial(alpha = 14, beta = 1, y = num_correct, n = total_questions)
+```
+:::
+
+:::{.callout-note collapse="true"}
+### Undecided
+
+```{webr}
+summarize_beta_binomial(alpha = 1, beta = 1, y = num_correct, n = total_questions)
+
+plot_beta_binomial(alpha = 1, beta = 1, y = num_correct, n = total_questions)
+```
+
+:::
+
+:::{.callout-note collapse="true"}
+### The Pessimist
+
+```{webr}
+summarize_beta_binomial(alpha = 4, beta = 11, y = num_correct, n = total_questions)
+
+plot_beta_binomial(alpha = 4, beta = 11, y = num_correct, n = total_questions)
+```
+
+:::
+
+
+:::{.callout-note collapse="true"}
+### Very Optimistic
+
+```{webr}
+summarize_beta_binomial(alpha = your_alpha, beta = your_beta, y = num_correct, n = total_questions)
+
+plot_beta_binomial(alpha = 140, beta = 10, y = num_correct, n = total_questions)
+```
+
+:::
+
+:::{.callout-note collapse="true"}
+
+### Your prior
+
+```{webr}
+summarize_beta_binomial(alpha = your_alpha, beta = your_beta, y = num_correct, n = total_questions)
+
+plot_beta_binomial(alpha = your_alpha, beta = your_beta, y = num_correct, n = total_questions)
+```
+
+:::
+
+
+:::{.callout}
+## Reflection
+
+- How does observing more data affect the shape of the posterior?
+
+- What happens to the posterior mean as you observe more correct or incorrect outcomes?
+
+- In what ways does the posterior reflect a compromise between prior belief and observed data?
+
+:::
+
+### Compare to your class or to our dataset
+
+```{r, simulated data, echo = FALSE}
+set.seed(10)
+
+cnn_onion <- data.frame(student = rep(1:100, each = 15), question = rep(1:15, times = 100), correct = rbinom(n = 15*100, size = 1, prob = 0.65), year = rep(2010:2024, each = 15, times = 100), institution = rep("Colby", times = 15*100)) # We will replace this with actual data
+
+head(cnn_onion)
+```
+
+Let's take a look at the student results from 2010.
+
+```{webr}
+
+cnn_onion_2010 <- cnn_onion |>
+  filter(year == 2010,
+         student %in% c(1:10))
+
+count(cnn_onion_2010, correct)
+```
+
+
+
+### The Optimist
+
+```{webr, summarize Colby 2010 optimist}
+summarize_beta_binomial(alpha = 8, beta = 3, y = 50, n = 150)
+```
+
+```{webr, fig.align = "center", fig.height = 5}
+plot_beta_binomial(alpha = 8, beta = 3, y = 50, n = 150)
+```
+
+### Undecided
+
+```{webr, summarize Colby 2010 undecided}
+summarize_beta_binomial(alpha = 1, beta = 1, y = 50, n = 150)
+```
+
+```{webr, fig.align = "center", fig.height = 5}
+plot_beta_binomial(alpha = 1, beta = 1, y = 50, n = 150)
+```
+
+### The Pessimist
+
+```{webr, summarize Colby 2010 pessimist}
+summarize_beta_binomial(alpha = 4, beta = 11, y = 50, n = 150)
+```
+
+```{webr, fig.align = "center", fig.height = 5}
+plot_beta_binomial(alpha = 4, beta = 11, y = 50, n = 150)
+```
+
+
+### Very Optimistic
+
+```{webr, summarize Colby 2010 very optimistic}
+summarize_beta_binomial(alpha = 140, beta = 10, y = 50, n = 150)
+```
+
+```{webr, fig.align = "center", fig.height = 5}
+plot_beta_binomial(alpha = 140, beta = 10, y = 50, n = 150)
+```
+
+
+## Comparison of the priors
+
+```{webr, fig.align = "center", fig.width = 15, echo = FALSE, fig.height=5}
+library(gridExtra)
+
+optimist <- plot_beta_binomial(8, 3, y = 50, n = 150) +
+  labs(title = "Optimistic")
+
+undecided <- plot_beta_binomial(1, 1, y = 50, n = 150) +
+  labs(title = "Undecided")
+
+pessimist <- plot_beta_binomial(4, 11, y = 50, n = 150) +
+  labs(title = "Pessimistic")
+
+very_optimistic <- plot_beta_binomial(140, 10, y = 50, n = 150) +
+  labs(title = "Very Optimistic")
+
+gridExtra::grid.arrange(optimist, undecided, pessimist, very_optimistic, ncol = 2)
+
+```
+
+```{r echo = FALSE}
+
+optimist <- plot_beta_binomial(8, 3, y = 50, n = 150) +
+  labs(title = "Optimistic")
+
+undecided <- plot_beta_binomial(1, 1, y = 50, n = 150) +
+  labs(title = "Undecided")
+
+pessimist <- plot_beta_binomial(4, 11, y = 50, n = 150) +
+  labs(title = "Pessimistic")
+
+very_optimistic <- plot_beta_binomial(140, 10, y = 50, n = 150) +
+  labs(title = "Very Optimistic")
+
+```
+
+Fill in the gaps to add your alpha and beta shape parameters with your guess:
+
+```{webr}
+library(gridExtra)
+
+your_plot <- plot_beta_binomial(alpha = your_alpha, beta = your_beta, y = 50, n = 150) +
+  labs(title = "Your Prior")
+
+gridExtra::grid.arrange(optimist, undecided, pessimist, very_optimistic, your_plot, ncol = 2)
+
+```
+
+
+::: {.callout-tip}
+
+### Reflection
+
+- Inspecting the updated posteriors, how did the posteriors change or differ based on the respective priors? 
+
+- What happened when you had a more informative prior, e.g. The Very Optimistic?
+
+- Look back at the summary statistics that you calculated for the distributions. Choose one of the posteriors "Optimistic, Pessimistic, Undecided, Very Optimistic" and compare it with your own. What do each of the summary statistics (mean, mode, standard deviation) tell you about the probability of success after seeing the data?
+
+:::
+
+
+::: {.callout-note}
+## Recap
+
+In this activity, you:
+
+-   Made a prediction about how well you'd do on a quiz and turned that into a prior model
+
+-   Learned about different types of priors: optimistic, undecided, and pessimistic
+
+-   Updated your prior using data from the quiz to get a posterior model
+
+-   Compared how different priors affect the posterior, even when we see the same data
+
+-   Practiced reading and interpreting plots of priors and posteriors
+
+-   Calculated key summary statistics like the mean, mode, and standard deviation
+:::
+
+
+This exercise shows how Bayesian thinking helps us combine what we already believe with new evidence to make better, more informed decisions. And sometimes, it reminds us that even when we think we’re great at telling real news from fake news, the data might say otherwise!
+
+::: {.callout-tip}
+## Reflection
+
+Think about your prior prediction and how it compared to the data.
+
+-   How similar or different was your prior to the actual results?
+
+-   Did updating your beliefs with data change your thinking? In what way?
+
+-   If you had chosen a different prior (e.g., more vague or more informative), how would your posterior have changed?
+
+-   What does this activity show about the role of prior knowledge or assumptions in data analysis?
+
+Take a few minutes to jot down your thoughts before sharing your ideas with a partner or group.
+:::

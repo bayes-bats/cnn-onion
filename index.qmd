@@ -2,17 +2,50 @@
 title: "CNN vs. Onion"
 ---
 
-[Some description]
+This repository contains two complementary classroom activities designed to introduce students to Bayesian and Frequentist approaches to reasoning under uncertainty. Each activity includes detailed facilitator guides, student materials, and R-based exercises for data exploration and model interpretation.
 
-## Bayesian Activity
+Each activity is designed for classroom use with built-in flexibility for guided instruction or independent exploration. Facilitator guides provide setup instructions, discussion prompts, and example code.
 
-[Facilitator Guide](bayesian-activity/cnn-onion-facilitator-guide.qmd)
+## Bayesian Activity: CNN vs. The Onion – Modeling Prior and Posterior Beliefs
 
-[Student Handout](bayesian-activity/cnn-onion-student-handout.qmd)
+The goal of this activity is to explore how prior beliefs, what we think is probable before seeing any data, can influence the conclusions we draw after seeing new evidence (our posterior beliefs).
 
-## Frequentist Activity
+Students take a short quiz distinguishing real headlines (CNN) from satirical ones (The Onion), construct a prior model based on their expectations, and update it using quiz data to form a posterior model.
 
-[Student Handout](frequentist-activity/cnn-onion-template.qmd)
+### Learning Objectives:
+
+- Construct and interpret prior and posterior models
+
+- Visualize model updates with new data
+
+- Calculate and compare summary statistics (mean, mode, standard deviation)
+
+### Activity Resources
+
+- [Classroom Activity](bayesian-activity/cnn-onion-beta-binomial.qmd)
+
+- [Facilitator Guide](bayesian-activity/cnn-onion-facilitator-guide.qmd)
+
+- [Student Handout](bayesian-activity/cnn-onion-student-handout.qmd)
+
+## Frequentist Activity: Hypothesis Testing with “CNN vs. The Onion” Quiz Data
+
+In this activity, students use their quiz results to practice Frequentist reasoning. They simulate data, review distributions, and conduct both informal and formal hypothesis tests to assess their ability to distinguish real versus fake news headlines.
+
+### Learning Objectives:
+
+- Review probability distributions and sampling variability
+
+- Use R to simulate data and compute test statistics
+
+- Perform informal and formal hypothesis testing
+
+
+### Activity Resources
+
+- [Student Handout](frequentist-activity/cnn-onion-template.qmd)
+
+
 
 ## Acknowledgements
 
