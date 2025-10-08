@@ -60,7 +60,6 @@ In this exercise you will assess people's ability to determine real news stories
 
 ```{r packages, message = FALSE}
 library(tidyverse)
-library(bayesrules)
 library(gridExtra)
 ```
 
