@@ -4,3 +4,4 @@ _site
 *.pdf
 *.html
 *.DS_Store
+.Rhistory
