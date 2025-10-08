@@ -208,6 +208,12 @@
       "Repository": "CRAN",
       "Encoding": "UTF-8"
     },
+    "bayesrules": {
+      "Package": "bayesrules",
+      "Version": "0.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN"
+    },
     "bit": {
       "Package": "bit",
       "Version": "4.6.0",
