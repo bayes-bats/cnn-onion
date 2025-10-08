@@ -394,8 +394,7 @@ betas <- list(
 plots <- map(betas, ~ plot_beta(.x[1], .x[2]))
 
 # Arrange in 3x3 grid
-library(patchwork)
-wrap_plots(plots, ncol = 3)
+gridExtra::grid.arrange(grobs = plots, ncol = 3)
 ```
 
 ::: {.callout-note title="Questions"}
