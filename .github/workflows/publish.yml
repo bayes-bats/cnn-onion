@@ -26,6 +26,9 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
+          
+      - name: Restore packages but skip igraph
+        run: Rscript -e 'renv::restore(exclude = "igraph")'
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
