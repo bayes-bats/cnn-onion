@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4df3b0c4fafa0f66eafcead0ee6cff11.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,6 +80,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">CNN vs.&nbsp;Onion</span>
     </a>
@@ -109,8 +112,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bayesian-activity" id="toc-bayesian-activity" class="nav-link active" data-scroll-target="#bayesian-activity">Bayesian Activity</a></li>
-  <li><a href="#frequentist-activity" id="toc-frequentist-activity" class="nav-link" data-scroll-target="#frequentist-activity">Frequentist Activity</a></li>
+  <li><a href="#bayesian-activity-cnn-vs.-the-onion-modeling-prior-and-posterior-beliefs" id="toc-bayesian-activity-cnn-vs.-the-onion-modeling-prior-and-posterior-beliefs" class="nav-link active" data-scroll-target="#bayesian-activity-cnn-vs.-the-onion-modeling-prior-and-posterior-beliefs">Bayesian Activity: CNN vs.&nbsp;The Onion – Modeling Prior and Posterior Beliefs</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives:</a></li>
+  <li><a href="#activity-resources" id="toc-activity-resources" class="nav-link" data-scroll-target="#activity-resources">Activity Resources</a></li>
+  </ul></li>
+  <li><a href="#frequentist-activity-hypothesis-testing-with-cnn-vs.-the-onion-quiz-data" id="toc-frequentist-activity-hypothesis-testing-with-cnn-vs.-the-onion-quiz-data" class="nav-link" data-scroll-target="#frequentist-activity-hypothesis-testing-with-cnn-vs.-the-onion-quiz-data">Frequentist Activity: Hypothesis Testing with “CNN vs.&nbsp;The Onion” Quiz Data</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives-1" id="toc-learning-objectives-1" class="nav-link" data-scroll-target="#learning-objectives-1">Learning Objectives:</a></li>
+  <li><a href="#activity-resources-1" id="toc-activity-resources-1" class="nav-link" data-scroll-target="#activity-resources-1">Activity Resources</a></li>
+  </ul></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
 </nav>
@@ -137,15 +148,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>[Some description]</p>
-<section id="bayesian-activity" class="level2">
-<h2 class="anchored" data-anchor-id="bayesian-activity">Bayesian Activity</h2>
-<p><a href="./bayesian-activity/cnn-onion-facilitator-guide.html">Facilitator Guide</a></p>
-<p><a href="./bayesian-activity/cnn-onion-student-handout.html">Student Handout</a></p>
+<p>This repository contains two complementary classroom activities designed to introduce students to Bayesian and Frequentist approaches to reasoning under uncertainty. Each activity includes detailed facilitator guides, student materials, and R-based exercises for data exploration and model interpretation.</p>
+<p>Each activity is designed for classroom use with built-in flexibility for guided instruction or independent exploration. Facilitator guides provide setup instructions, discussion prompts, and example code.</p>
+<section id="bayesian-activity-cnn-vs.-the-onion-modeling-prior-and-posterior-beliefs" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-activity-cnn-vs.-the-onion-modeling-prior-and-posterior-beliefs">Bayesian Activity: CNN vs.&nbsp;The Onion – Modeling Prior and Posterior Beliefs</h2>
+<p>The goal of this activity is to explore how prior beliefs, what we think is probable before seeing any data, can influence the conclusions we draw after seeing new evidence (our posterior beliefs).</p>
+<p>Students take a short quiz distinguishing real headlines (CNN) from satirical ones (The Onion), construct a prior model based on their expectations, and update it using quiz data to form a posterior model.</p>
+<section id="learning-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives">Learning Objectives:</h3>
+<ul>
+<li><p>Construct and interpret prior and posterior models</p></li>
+<li><p>Visualize model updates with new data</p></li>
+<li><p>Calculate and compare summary statistics (mean, mode, standard deviation)</p></li>
+</ul>
 </section>
-<section id="frequentist-activity" class="level2">
-<h2 class="anchored" data-anchor-id="frequentist-activity">Frequentist Activity</h2>
-<p><a href="./frequentist-activity/cnn-onion-template.html">Student Handout</a></p>
+<section id="activity-resources" class="level3">
+<h3 class="anchored" data-anchor-id="activity-resources">Activity Resources</h3>
+<ul>
+<li><p><a href="./bayesian-activity/cnn-onion-beta-binomial.html">Classroom Activity</a></p></li>
+<li><p><a href="./bayesian-activity/cnn-onion-facilitator-guide.html">Facilitator Guide</a></p></li>
+<li><p><a href="./bayesian-activity/cnn-onion-student-handout.html">Student Handout</a></p></li>
+</ul>
+</section>
+</section>
+<section id="frequentist-activity-hypothesis-testing-with-cnn-vs.-the-onion-quiz-data" class="level2">
+<h2 class="anchored" data-anchor-id="frequentist-activity-hypothesis-testing-with-cnn-vs.-the-onion-quiz-data">Frequentist Activity: Hypothesis Testing with “CNN vs.&nbsp;The Onion” Quiz Data</h2>
+<p>In this activity, students use their quiz results to practice Frequentist reasoning. They simulate data, review distributions, and conduct both informal and formal hypothesis tests to assess their ability to distinguish real versus fake news headlines.</p>
+<section id="learning-objectives-1" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-1">Learning Objectives:</h3>
+<ul>
+<li><p>Review probability distributions and sampling variability</p></li>
+<li><p>Use R to simulate data and compute test statistics</p></li>
+<li><p>Perform informal and formal hypothesis testing</p></li>
+</ul>
+</section>
+<section id="activity-resources-1" class="level3">
+<h3 class="anchored" data-anchor-id="activity-resources-1">Activity Resources</h3>
+<ul>
+<li><a href="./frequentist-activity/cnn-onion-template.html">Student Handout</a></li>
+</ul>
+</section>
 </section>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
@@ -206,13 +248,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
