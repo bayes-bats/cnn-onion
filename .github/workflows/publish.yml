@@ -22,15 +22,28 @@ jobs:
         with:
           r-version: '4.2.0'
 
-      # - name: Install R Dependencies
-      #   uses: r-lib/actions/setup-renv@v2
-      #   with:
-      #     cache-version: 1
+      - name: Install system libraries for igraph (GLPK)
+        run: |
+          set -eux
+          sudo apt-get update
+          # Runtime (version depends on Ubuntu image)
+          if apt-cache show libglpk40 >/dev/null 2>&1; then
+            sudo apt-get install -y libglpk40
+          else
+            sudo apt-get install -y libglpk41
+          fi
+          # Headers for compilation (safe even if a binary is used)
+          sudo apt-get install -y libglpk-dev build-essential
+          # Refresh linker cache
+          sudo ldconfig
+          # Optional: prove it's visible
+          ldconfig -p | grep -i glpk || true
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
           
-      - name: Restore packages but skip igraph
-        run: Rscript -e 'install.packages("renv"); renv::restore(exclude = "igraph")'
-
-
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
