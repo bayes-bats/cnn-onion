@@ -10,7 +10,7 @@ Each activity is designed for classroom use with built-in flexibility for guided
 
 The goal of this activity is to explore how prior beliefs, what we think is probable before seeing any data, can influence the conclusions we draw after seeing new evidence (our posterior beliefs).
 
-Students take a short quiz distinguishing real headlines (CNN) from satirical ones (The Onion), construct a prior model based on their expectations, and update it using quiz data to form a posterior model.
+Before taking the CNN vs The Onion headline quiz, students are encouraged to think about how many headlines they expect a person might guess correctly and turn that guess into a *prior model*, or starting point for their beliefs. Students take the short quiz distinguishing real headlines (CNN) from satirical ones (The Onion), and update their *prior model* using quiz data to form a *posterior model*. Student compare three different prior models representing other beliefs about how many answers people will get correct in the game: someone expecting a person to guess most answers correctly (optimistic), someone undecided (no prior knowledge) about whether a person will guess many right or wrong (undecided), and someone expecting to guess most answers incorrectly (pessimistic).
 
 ### Learning Objectives:
 
